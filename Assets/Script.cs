@@ -10,11 +10,17 @@ public class Script : MonoBehaviour
     private float horizontal;
     private bool flip = true;
     public Animator animator;
+    public int jumpForce = 10;
+    public bool onGround;
+    public LayerMask Ground;
+    public Transform GroundCheck;
+    private float GroundCheckRadius;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        GroundCheckRadius = GroundCheck().GetComponent()<Circecollider2D>
     }
         
 
@@ -37,6 +43,8 @@ public class Script : MonoBehaviour
             transform.localScale *= new Vector2(-1, 1);
             flip = !flip;
         }
+           Jump()
+           CheckingGround()
     }
     /*
     void Flip()
@@ -47,5 +55,18 @@ public class Script : MonoBehaviour
         transform.localScale = theScale;
     }
     */
+
+    void Jump()
+    {
+        if (OnGround && Input.GetKeyDown())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    void CheckingGround()
+    {
+        onGround = Physics2D.OverlapCircle(GroundCheck,)
+    }
 }
 
